@@ -14,13 +14,13 @@ public class User {
     @Column(unique = true)
     private String email;
     private String password;
-    private UserRole role;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
-    private List<Enrollment> enrollmentsList;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-    private List<Preferences> preferencesList;
+    private String role;
+    // @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
+    // private List<Enrollment> enrollmentsList;
+    // @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    // private List<Preferences> preferencesList;
 
-    public User(String name, String email, String password, UserRole role) {
+    public User(String name, String email, String password, String role) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -32,6 +32,11 @@ public class User {
 
     public User(Long teacher_id) {
         this.id = teacher_id;
+    }
+
+    public User(Long teacher_id, String role) {
+        this.id = teacher_id;
+        this.role = role;
     }
 
     public Long getId() {
@@ -66,27 +71,27 @@ public class User {
         this.password = password;
     }
 
-    public UserRole getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(UserRole role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public List<Enrollment> getEnrollmentsList() {
-        return enrollmentsList;
-    }
-
-    public void setEnrollmentsList(List<Enrollment> enrollmentsList) {
-        this.enrollmentsList = enrollmentsList;
-    }
-
-    public List<Preferences> getPreferencesList() {
-        return preferencesList;
-    }
-
-    public void setPreferencesList(List<Preferences> preferencesList) {
-        this.preferencesList = preferencesList;
-    }
+//    public List<Enrollment> getEnrollmentsList() {
+//        return enrollmentsList;
+//    }
+//
+//    public void setEnrollmentsList(List<Enrollment> enrollmentsList) {
+//        this.enrollmentsList = enrollmentsList;
+//    }
+//
+//    public List<Preferences> getPreferencesList() {
+//        return preferencesList;
+//    }
+//
+//    public void setPreferencesList(List<Preferences> preferencesList) {
+//        this.preferencesList = preferencesList;
+//    }
 }
